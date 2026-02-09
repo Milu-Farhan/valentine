@@ -43,7 +43,9 @@ const REASONS = [
   "How you make me want to be a better person",
 ];
 
-const STARS = Array.from({ length: 60 }, (_, i) => ({
+const IS_MOBILE = window.innerWidth <= 520;
+
+const STARS = Array.from({ length: IS_MOBILE ? 30 : 60 }, (_, i) => ({
   id: i,
   left: Math.random() * 100,
   top: Math.random() * 100,
@@ -52,7 +54,7 @@ const STARS = Array.from({ length: 60 }, (_, i) => ({
   duration: 2 + Math.random() * 3,
 }));
 
-const HEARTS = Array.from({ length: 30 }, (_, i) => ({
+const HEARTS = Array.from({ length: IS_MOBILE ? 15 : 30 }, (_, i) => ({
   id: i,
   emoji: HEART_EMOJIS[i % HEART_EMOJIS.length],
   left: Math.random() * 100,
@@ -68,14 +70,14 @@ const FIREWORK_COLORS = [
   "#ffd54f", "#fff", "#b388ff", "#ff6e6e",
 ];
 
-const FIREWORKS = Array.from({ length: 10 }, (_, i) => ({
+const FIREWORKS = Array.from({ length: IS_MOBILE ? 6 : 10 }, (_, i) => ({
   id: i,
   x: 8 + Math.random() * 84,
   burstY: 10 + Math.random() * 35,
   delay: i * 0.5 + Math.random() * 0.3,
-  sparks: Array.from({ length: 40 }, (_, j) => ({
+  sparks: Array.from({ length: IS_MOBILE ? 20 : 40 }, (_, j) => ({
     id: j,
-    angle: (j / 40) * 360 + (Math.random() - 0.5) * 12,
+    angle: (j / (IS_MOBILE ? 20 : 40)) * 360 + (Math.random() - 0.5) * 12,
     distance: 100 + Math.random() * 160,
     size: 3.5 + Math.random() * 4,
     color: FIREWORK_COLORS[Math.floor(Math.random() * FIREWORK_COLORS.length)],
@@ -121,7 +123,7 @@ const PROMISES = [
   "I promise to love you more with every passing second",
 ];
 
-const PETALS = Array.from({ length: 18 }, (_, i) => ({
+const PETALS = Array.from({ length: IS_MOBILE ? 10 : 18 }, (_, i) => ({
   id: i,
   emoji: ["🌸", "🥀", "🌺", "💮", "🪷"][i % 5],
   left: Math.random() * 100,
@@ -239,14 +241,14 @@ function SparkleTrail() {
   const [sparkles, setSparkles] = useState([]);
 
   useEffect(() => {
-    const handleMove = (e) => {
+    const addSparkle = (x, y) => {
       const id = Date.now() + Math.random();
       setSparkles((prev) => [
         ...prev.slice(-12),
         {
           id,
-          x: e.clientX,
-          y: e.clientY,
+          x,
+          y,
           emoji: ["✨", "💖", "💫", "🌸"][Math.floor(Math.random() * 4)],
         },
       ]);
@@ -254,8 +256,17 @@ function SparkleTrail() {
         setSparkles((prev) => prev.filter((s) => s.id !== id));
       }, 800);
     };
-    window.addEventListener("mousemove", handleMove);
-    return () => window.removeEventListener("mousemove", handleMove);
+    const handleMouse = (e) => addSparkle(e.clientX, e.clientY);
+    const handleTouch = (e) => {
+      const t = e.touches[0];
+      if (t) addSparkle(t.clientX, t.clientY);
+    };
+    window.addEventListener("mousemove", handleMouse);
+    window.addEventListener("touchmove", handleTouch, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", handleMouse);
+      window.removeEventListener("touchmove", handleTouch);
+    };
   }, []);
 
   return (
@@ -691,9 +702,10 @@ function App() {
       ? card.getBoundingClientRect()
       : { left: 0, right: 0, top: 0, bottom: 0 };
 
-    const btnW = 170;
-    const btnH = 50;
-    const pad = 20;
+    const isMobile = window.innerWidth <= 520;
+    const btnW = isMobile ? 130 : 170;
+    const btnH = isMobile ? 44 : 50;
+    const pad = isMobile ? 10 : 20;
     const vw = window.innerWidth;
     const vh = window.innerHeight;
 

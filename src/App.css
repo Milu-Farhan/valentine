@@ -19,6 +19,7 @@ body,
   height: 100%;
   width: 100%;
   overflow: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -749,6 +750,8 @@ body {
   width: 92%;
   max-height: 90vh;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   opacity: 0;
   transform: translateY(40px) scale(0.95);
   transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1335,34 +1338,148 @@ body {
   50% { transform: translateY(-14px) rotate(12deg); }
 }
 
-/* Responsive */
+/* Prevent double-tap zoom on mobile */
+* { touch-action: manipulation; }
+
+/* Safe area insets for notched phones */
+.app {
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/* Responsive — tablets & small laptops */
+@media (max-width: 680px) {
+  .app::before { width: 400px; height: 400px; }
+  .app::after { width: 300px; height: 300px; }
+  .app-celebrate::before { width: 600px; height: 600px; }
+  .divider-line { width: 80px; }
+}
+
+/* Responsive — phones */
 @media (max-width: 520px) {
-  .question-card { padding: 32px 22px 28px; }
-  .question-title { font-size: 26px; min-height: 36px; }
-  .question-main { font-size: 34px; }
-  .big-heart-icon { font-size: 56px; }
-  .rose-core { font-size: 42px; }
-  .rose-bloom { width: 70px; height: 70px; }
-  .question-from { font-size: 15px; }
-  .love-letter-inner { padding: 30px 20px 26px; }
-  .yes-title { font-size: 38px; }
-  .name-his, .name-hers { font-size: 26px; }
-  .infinity-symbol { font-size: 28px; }
-  .love-line { font-size: 13.5px; }
-  .line-1 { font-size: 20px; }
-  .signature { font-size: 18px; }
-  .signature-name { font-size: 22px; }
-  .heart-shape { width: 80px; height: 80px; }
-  .heart-shape::before, .heart-shape::after { width: 42px; height: 65px; border-radius: 42px 42px 0 0; }
+  /* Question screen */
+  .question-card { padding: 28px 20px 24px; width: 92%; max-width: 400px; border-radius: 22px; }
+  .card-glow-border { border-radius: 22px; }
+  .card-glow-border::after { border-radius: 21px; }
+  .question-title { font-size: 24px; min-height: 34px; }
+  .question-main { font-size: 30px; margin-bottom: 8px; }
+  .question-sub { font-size: 13px; margin-bottom: 6px; }
+  .question-from { font-size: 14px; margin-bottom: 20px; }
+  .big-heart-icon { font-size: 52px; }
+  .rose-core { font-size: 40px; }
+  .rose-bloom { width: 65px; height: 65px; margin-bottom: 6px; }
+  .card-sparkle { font-size: 14px; }
+
+  /* Buttons */
+  .buttons-area { gap: 14px; }
+  .btn { padding: 12px 32px; font-size: 16px; }
+  .btn-no { padding: 11px 28px; font-size: 14px; }
+
+  /* Love letter screen */
+  .love-letter { width: 94%; max-height: 88vh; }
+  .love-letter-inner { padding: 26px 18px 22px; border-radius: 22px; }
+  .yes-title { font-size: 34px; }
+  .yes-subtitle { font-size: 14px; margin-bottom: 14px; }
+  .names-together { gap: 10px; margin-bottom: 14px; }
+  .name-his, .name-hers { font-size: 24px; }
+  .infinity-symbol { font-size: 26px; }
+
+  /* Engraved heart */
+  .heart-shape { width: 78px; height: 78px; }
+  .heart-shape::before, .heart-shape::after { width: 40px; height: 62px; border-radius: 40px 40px 0 0; }
   .heart-shape::before { left: 40px; }
-  .heart-initials { font-size: 22px; }
-  .reasons-title { font-size: 19px; }
-  .reason-text { font-size: 13px; min-height: 38px; }
-  .promises-title { font-size: 19px; }
-  .promise-item { font-size: 12.5px; }
-  .forever-text { font-size: 24px; }
-  .forever-highlight { font-size: 28px; }
-  .forever-ring { font-size: 30px; }
-  .timer-value { font-size: 18px; }
-  .timer-unit { min-width: 44px; padding: 6px 4px; }
+  .heart-initials { font-size: 20px; }
+  .heart-date { font-size: 8px; }
+
+  /* Letter text */
+  .love-line { font-size: 13px; line-height: 1.7; margin-bottom: 12px; }
+  .line-1 { font-size: 19px; margin-bottom: 14px; }
+  .signature { font-size: 17px; margin-top: 16px; }
+  .signature-name { font-size: 21px; }
+
+  /* Reasons */
+  .reasons-carousel { margin: 6px 0 18px; }
+  .reasons-title { font-size: 18px; }
+  .reason-text { font-size: 12.5px; min-height: 36px; padding: 0 6px; }
+  .reason-dots { gap: 5px; margin-top: 10px; }
+
+  /* Promises */
+  .promises-section { margin: 6px 0 18px; }
+  .promises-title { font-size: 18px; margin-bottom: 12px; }
+  .promise-item { font-size: 12px; margin-bottom: 8px; line-height: 1.6; }
+
+  /* Love meter */
+  .love-meter { margin-top: 8px; }
+  .meter-label { font-size: 12px; }
+  .meter-bar { width: 85%; height: 7px; }
+  .meter-value { font-size: 19px; }
+
+  /* Timer */
+  .love-timer { margin-top: 18px; }
+  .timer-label { font-size: 16px; margin-bottom: 10px; }
+  .timer-grid { gap: 6px; }
+  .timer-unit { min-width: 42px; padding: 6px 4px; border-radius: 10px; }
+  .timer-value { font-size: 17px; }
+  .timer-name { font-size: 9px; }
+  .timer-sub { font-size: 11px; }
+
+  /* Forever */
+  .forever-message { margin-top: 20px; margin-bottom: 12px; }
+  .forever-ring { font-size: 28px; }
+  .forever-text { font-size: 22px; }
+  .forever-highlight { font-size: 26px; }
+
+  /* Dividers */
+  .love-divider { gap: 8px; margin-bottom: 16px; }
+  .divider-line { width: 70px; }
+
+  /* Glow effects */
+  .app::before { width: 300px; height: 300px; }
+  .app::after { width: 200px; height: 200px; }
+  .app-celebrate::before { width: 450px; height: 450px; }
+
+  /* Shooting star tails shorter */
+  .shooting-star::before { width: calc(var(--tail-length, 120px) * 0.6); }
+  .shooting-star::after { width: calc(var(--tail-length, 120px) * 0.4); }
+}
+
+/* Responsive — very small phones (SE, mini) */
+@media (max-width: 380px) {
+  .question-card { padding: 22px 16px 20px; }
+  .question-title { font-size: 21px; min-height: 30px; }
+  .question-main { font-size: 26px; }
+  .question-sub { font-size: 12px; }
+  .question-from { font-size: 13px; margin-bottom: 16px; }
+  .rose-bloom { width: 55px; height: 55px; }
+  .rose-core { font-size: 34px; }
+  .btn { padding: 10px 26px; font-size: 15px; }
+  .btn-no { padding: 10px 22px; font-size: 13px; }
+  .love-letter-inner { padding: 22px 14px 18px; }
+  .yes-title { font-size: 28px; }
+  .yes-subtitle { font-size: 13px; }
+  .name-his, .name-hers { font-size: 21px; }
+  .infinity-symbol { font-size: 22px; }
+  .love-line { font-size: 12px; }
+  .line-1 { font-size: 17px; }
+  .timer-unit { min-width: 36px; padding: 5px 3px; }
+  .timer-value { font-size: 15px; }
+  .timer-name { font-size: 8px; }
+  .forever-text { font-size: 19px; }
+  .forever-highlight { font-size: 22px; }
+  .heart-shape { width: 68px; height: 68px; }
+  .heart-shape::before, .heart-shape::after { width: 35px; height: 55px; border-radius: 35px 35px 0 0; }
+  .heart-shape::before { left: 35px; }
+  .heart-initials { font-size: 18px; }
+  .promise-item { font-size: 11px; }
+  .reason-text { font-size: 11.5px; }
+}
+
+/* Responsive height — landscape phones */
+@media (max-height: 600px) {
+  .question-card { padding: 18px 20px 16px; }
+  .rose-bloom { width: 50px; height: 50px; margin-bottom: 4px; }
+  .rose-core { font-size: 32px; }
+  .question-main { font-size: 28px; margin-bottom: 4px; }
+  .question-from { margin-bottom: 14px; }
+  .love-letter { max-height: 92vh; }
+  .love-letter-inner { padding: 20px 18px; }
 }
