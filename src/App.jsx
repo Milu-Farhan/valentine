@@ -65,9 +65,18 @@ const HEARTS = Array.from({ length: IS_MOBILE ? 15 : 30 }, (_, i) => ({
 }));
 
 const FIREWORK_COLORS = [
-  "#ff6b81", "#ff4081", "#ffb3c1", "#f0d9b5",
-  "#d4a574", "#ff80ab", "#ea80fc", "#ff9e80",
-  "#ffd54f", "#fff", "#b388ff", "#ff6e6e",
+  "#ff6b81",
+  "#ff4081",
+  "#ffb3c1",
+  "#f0d9b5",
+  "#d4a574",
+  "#ff80ab",
+  "#ea80fc",
+  "#ff9e80",
+  "#ffd54f",
+  "#fff",
+  "#b388ff",
+  "#ff6e6e",
 ];
 
 const FIREWORKS = Array.from({ length: IS_MOBILE ? 6 : 10 }, (_, i) => ({
@@ -285,10 +294,16 @@ function SparkleTrail() {
 }
 
 /* Real recorded firework sound files */
-const LIFT_SOUNDS = ["/sounds/lift1.mp3", "/sounds/lift2.mp3", "/sounds/lift3.mp3"];
+const LIFT_SOUNDS = [
+  "/sounds/lift1.mp3",
+  "/sounds/lift2.mp3",
+  "/sounds/lift3.mp3",
+];
 const BURST_SOUNDS = [
-  "/sounds/burst1.mp3", "/sounds/burst2.mp3",
-  "/sounds/burst-sm-1.mp3", "/sounds/burst-sm-2.mp3",
+  "/sounds/burst1.mp3",
+  "/sounds/burst2.mp3",
+  "/sounds/burst-sm-1.mp3",
+  "/sounds/burst-sm-2.mp3",
 ];
 const CRACKLE_SOUNDS = ["/sounds/crackle1.mp3", "/sounds/crackle-sm-1.mp3"];
 
@@ -318,26 +333,38 @@ function useFireworkSounds() {
         const a = copies.find((c) => c.paused || c.ended) || copies[0];
         a.currentTime = 0;
         a.volume = Math.min(1, Math.max(0, volume));
-        a.play().catch(() => { /* autoplay blocked */ });
-      } catch { /* audio not supported */ }
+        a.play().catch(() => {
+          /* autoplay blocked */
+        });
+      } catch {
+        /* audio not supported */
+      }
     }, delay * 1000);
   }, []);
 
-  const playLaunch = useCallback((delay) => {
-    preload();
-    const src = LIFT_SOUNDS[Math.floor(Math.random() * LIFT_SOUNDS.length)];
-    playFile(src, delay, 0.4 + Math.random() * 0.2);
-  }, [preload, playFile]);
+  const playLaunch = useCallback(
+    (delay) => {
+      preload();
+      const src = LIFT_SOUNDS[Math.floor(Math.random() * LIFT_SOUNDS.length)];
+      playFile(src, delay, 0.4 + Math.random() * 0.2);
+    },
+    [preload, playFile],
+  );
 
-  const playBurst = useCallback((delay) => {
-    preload();
-    /* Play a burst sound */
-    const burstSrc = BURST_SOUNDS[Math.floor(Math.random() * BURST_SOUNDS.length)];
-    playFile(burstSrc, delay, 0.5 + Math.random() * 0.3);
-    /* Layer a crackle on top slightly after the burst */
-    const crackleSrc = CRACKLE_SOUNDS[Math.floor(Math.random() * CRACKLE_SOUNDS.length)];
-    playFile(crackleSrc, delay + 0.15, 0.3 + Math.random() * 0.2);
-  }, [preload, playFile]);
+  const playBurst = useCallback(
+    (delay) => {
+      preload();
+      /* Play a burst sound */
+      const burstSrc =
+        BURST_SOUNDS[Math.floor(Math.random() * BURST_SOUNDS.length)];
+      playFile(burstSrc, delay, 0.5 + Math.random() * 0.3);
+      /* Layer a crackle on top slightly after the burst */
+      const crackleSrc =
+        CRACKLE_SOUNDS[Math.floor(Math.random() * CRACKLE_SOUNDS.length)];
+      playFile(crackleSrc, delay + 0.15, 0.3 + Math.random() * 0.2);
+    },
+    [preload, playFile],
+  );
 
   return { playLaunch, playBurst };
 }
@@ -455,10 +482,7 @@ function PromisesSection() {
       <p className="promises-title">My Promises to You 🤞</p>
       <div className="promises-list">
         {PROMISES.map((promise, i) => (
-          <p
-            key={i}
-            className={`promise-item promise-${i + 1}`}
-          >
+          <p key={i} className={`promise-item promise-${i + 1}`}>
             <span className="promise-icon">💫</span>
             {promise}
           </p>
@@ -794,13 +818,17 @@ function App() {
           <Typewriter text="Dear Paappu..." delay={90} className="dear-line" />
         </h1>
 
-        <h2 className="question-main anim-in anim-d3">Will You Be My Valentine?</h2>
+        <h2 className="question-main anim-in anim-d3">
+          Will You Be My Valentine?
+        </h2>
 
         <p className="question-sub anim-in anim-d4">
           I already know the answer, but I just want to hear you say it... 🥰
         </p>
 
-        <div className="question-from anim-in anim-d5">— with all my love, Faruu</div>
+        <div className="question-from anim-in anim-d5">
+          — with all my love, Faruu
+        </div>
 
         <div className="buttons-area anim-in anim-d6">
           <button

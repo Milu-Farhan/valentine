@@ -11,6 +11,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,
@@ -54,7 +57,12 @@ body {
   position: absolute;
   width: 700px;
   height: 700px;
-  background: radial-gradient(circle, rgba(255, 107, 129, 0.22) 0%, rgba(194, 24, 91, 0.08) 40%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 107, 129, 0.22) 0%,
+    rgba(194, 24, 91, 0.08) 40%,
+    transparent 70%
+  );
   border-radius: 50%;
   pointer-events: none;
   animation: pulse-glow 4s ease-in-out infinite;
@@ -65,7 +73,11 @@ body {
   position: absolute;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(120, 80, 200, 0.08) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(120, 80, 200, 0.08) 0%,
+    transparent 70%
+  );
   border-radius: 50%;
   pointer-events: none;
   top: 5%;
@@ -76,12 +88,24 @@ body {
 .app-celebrate::before {
   width: 1000px;
   height: 1000px;
-  background: radial-gradient(circle, rgba(255, 107, 129, 0.3) 0%, rgba(194, 24, 91, 0.12) 40%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 107, 129, 0.3) 0%,
+    rgba(194, 24, 91, 0.12) 40%,
+    transparent 70%
+  );
 }
 
 @keyframes pulse-glow {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.3); opacity: 0.9; }
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.9;
+  }
 }
 
 /* Twinkling stars */
@@ -101,8 +125,15 @@ body {
 }
 
 @keyframes twinkleStar {
-  0%, 100% { opacity: 0.2; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.2); }
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
 /* Shooting stars */
@@ -197,8 +228,14 @@ body {
 }
 
 @keyframes sparkleFade {
-  0% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
-  100% { opacity: 0; transform: translate(-50%, calc(-50% - 30px)) scale(0.3) rotate(180deg); }
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% - 30px)) scale(0.3) rotate(180deg);
+  }
 }
 
 /* Fireworks */
@@ -222,7 +259,12 @@ body {
   width: 3.5px;
   height: 0;
   transform: translateX(-50%);
-  background: linear-gradient(to top, transparent 0%, rgba(255, 200, 180, 0.6) 40%, rgba(255, 255, 255, 0.95) 100%);
+  background: linear-gradient(
+    to top,
+    transparent 0%,
+    rgba(255, 200, 180, 0.6) 40%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
   border-radius: 2px;
   opacity: 0;
   animation: trailShoot 0.7s ease-out forwards;
@@ -256,9 +298,15 @@ body {
 }
 
 @keyframes burstFlash {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Individual sparks */
@@ -300,16 +348,19 @@ body {
   }
   20% {
     opacity: 1;
-    transform: rotate(var(--spark-angle)) translateX(calc(var(--spark-dist) * 0.6)) scale(1);
+    transform: rotate(var(--spark-angle))
+      translateX(calc(var(--spark-dist) * 0.6)) scale(1);
   }
   60% {
     opacity: 0.7;
-    transform: rotate(var(--spark-angle)) translateX(var(--spark-dist)) scale(0.7);
+    transform: rotate(var(--spark-angle)) translateX(var(--spark-dist))
+      scale(0.7);
   }
   100% {
     opacity: 0;
     /* Sparks drift outward and fall down with gravity */
-    transform: rotate(var(--spark-angle)) translateX(var(--spark-dist)) translateY(60px) scale(0.1);
+    transform: rotate(var(--spark-angle)) translateX(var(--spark-dist))
+      translateY(60px) scale(0.1);
   }
 }
 
@@ -329,12 +380,28 @@ body {
 }
 
 @keyframes petalFall {
-  0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
-  5% { opacity: 0.6; }
-  25% { transform: translateY(25vh) translateX(var(--sway)) rotate(90deg); }
-  50% { transform: translateY(50vh) translateX(calc(var(--sway) * -0.5)) rotate(180deg); opacity: 0.4; }
-  75% { transform: translateY(75vh) translateX(var(--sway)) rotate(270deg); }
-  100% { transform: translateY(110vh) translateX(0) rotate(360deg); opacity: 0; }
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateY(25vh) translateX(var(--sway)) rotate(90deg);
+  }
+  50% {
+    transform: translateY(50vh) translateX(calc(var(--sway) * -0.5))
+      rotate(180deg);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translateY(75vh) translateX(var(--sway)) rotate(270deg);
+  }
+  100% {
+    transform: translateY(110vh) translateX(0) rotate(360deg);
+    opacity: 0;
+  }
 }
 
 /* Floating hearts */
@@ -353,29 +420,55 @@ body {
 }
 
 .floating-heart.swayLeft {
-  animation: floatUp linear infinite, swayL 3s ease-in-out infinite;
+  animation:
+    floatUp linear infinite,
+    swayL 3s ease-in-out infinite;
 }
 
 .floating-heart.swayRight {
-  animation: floatUp linear infinite, swayR 3s ease-in-out infinite;
+  animation:
+    floatUp linear infinite,
+    swayR 3s ease-in-out infinite;
 }
 
 @keyframes floatUp {
-  0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0; }
-  8% { opacity: 0.7; }
-  50% { opacity: 0.5; }
-  85% { opacity: 0.2; }
-  100% { transform: translateY(-115vh) rotate(360deg) scale(0.4); opacity: 0; }
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  85% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-115vh) rotate(360deg) scale(0.4);
+    opacity: 0;
+  }
 }
 
 @keyframes swayL {
-  0%, 100% { margin-left: 0; }
-  50% { margin-left: -30px; }
+  0%,
+  100% {
+    margin-left: 0;
+  }
+  50% {
+    margin-left: -30px;
+  }
 }
 
 @keyframes swayR {
-  0%, 100% { margin-left: 0; }
-  50% { margin-left: 30px; }
+  0%,
+  100% {
+    margin-left: 0;
+  }
+  50% {
+    margin-left: 30px;
+  }
 }
 
 /* Typewriter cursor */
@@ -388,8 +481,13 @@ body {
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 /* Floating whisper texts */
@@ -468,7 +566,9 @@ body {
 }
 
 @keyframes borderSpin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Rose bloom */
@@ -541,7 +641,11 @@ body {
 .question-card {
   position: relative;
   z-index: 10;
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 220, 225, 0.06) 100%);
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.11) 0%,
+    rgba(255, 220, 225, 0.06) 100%
+  );
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 180, 190, 0.18);
@@ -550,13 +654,18 @@ body {
   text-align: center;
   max-width: 540px;
   width: 90%;
-  box-shadow: 0 8px 60px rgba(230, 57, 70, 0.12), 0 0 120px rgba(255, 107, 129, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 8px 60px rgba(230, 57, 70, 0.12),
+    0 0 120px rgba(255, 107, 129, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   animation: cardAppear 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   transform: scale(0) rotate(-5deg);
 }
 
 @keyframes cardAppear {
-  to { transform: scale(1) rotate(0deg); }
+  to {
+    transform: scale(1) rotate(0deg);
+  }
 }
 
 .card-sparkle {
@@ -565,14 +674,36 @@ body {
   animation: twinkle 2s ease-in-out infinite;
 }
 
-.card-sparkle.tl { top: 14px; left: 16px; }
-.card-sparkle.tr { top: 14px; right: 16px; animation-delay: 0.5s; }
-.card-sparkle.bl { bottom: 14px; left: 16px; animation-delay: 1s; }
-.card-sparkle.br { bottom: 14px; right: 16px; animation-delay: 1.5s; }
+.card-sparkle.tl {
+  top: 14px;
+  left: 16px;
+}
+.card-sparkle.tr {
+  top: 14px;
+  right: 16px;
+  animation-delay: 0.5s;
+}
+.card-sparkle.bl {
+  bottom: 14px;
+  left: 16px;
+  animation-delay: 1s;
+}
+.card-sparkle.br {
+  bottom: 14px;
+  right: 16px;
+  animation-delay: 1.5s;
+}
 
 @keyframes twinkle {
-  0%, 100% { opacity: 0.4; transform: scale(0.8) rotate(0deg); }
-  50% { opacity: 1; transform: scale(1.3) rotate(20deg); }
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.8) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3) rotate(20deg);
+  }
 }
 
 /* kept for love letter heart burst reuse */
@@ -584,11 +715,22 @@ body {
 }
 
 @keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  14% { transform: scale(1.18); }
-  28% { transform: scale(1); }
-  42% { transform: scale(1.12); }
-  56% { transform: scale(1); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.18);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.12);
+  }
+  56% {
+    transform: scale(1);
+  }
 }
 
 .question-title {
@@ -601,7 +743,12 @@ body {
 }
 
 .dear-line {
-  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-light));
+  background: linear-gradient(
+    135deg,
+    var(--gold-light),
+    var(--gold),
+    var(--gold-light)
+  );
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -624,8 +771,13 @@ body {
 }
 
 @keyframes shimmer {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .question-sub {
@@ -652,12 +804,24 @@ body {
   animation: cardItemIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.anim-d1 { animation-delay: 0.3s; }
-.anim-d2 { animation-delay: 0.7s; }
-.anim-d3 { animation-delay: 1.9s; }
-.anim-d4 { animation-delay: 2.5s; }
-.anim-d5 { animation-delay: 3.0s; }
-.anim-d6 { animation-delay: 3.4s; }
+.anim-d1 {
+  animation-delay: 0.3s;
+}
+.anim-d2 {
+  animation-delay: 0.7s;
+}
+.anim-d3 {
+  animation-delay: 1.9s;
+}
+.anim-d4 {
+  animation-delay: 2.5s;
+}
+.anim-d5 {
+  animation-delay: 3s;
+}
+.anim-d6 {
+  animation-delay: 3.4s;
+}
 
 @keyframes cardItemIn {
   0% {
@@ -678,8 +842,14 @@ body {
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 0.8; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
 }
 
 /* Buttons */
@@ -701,28 +871,54 @@ body {
   cursor: pointer;
   transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   letter-spacing: 0.5px;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-yes {
-  background: linear-gradient(135deg, var(--rose) 0%, var(--rose-light) 50%, #ff4081 100%);
+  background: linear-gradient(
+    135deg,
+    var(--rose) 0%,
+    var(--rose-light) 50%,
+    #ff4081 100%
+  );
   color: #fff;
-  box-shadow: 0 4px 25px rgba(230, 57, 70, 0.4), 0 0 40px rgba(255, 107, 129, 0.15);
+  box-shadow:
+    0 4px 25px rgba(230, 57, 70, 0.4),
+    0 0 40px rgba(255, 107, 129, 0.15);
   animation: yesGlow 2s ease-in-out infinite;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.35s ease;
 }
 
 @keyframes yesGlow {
-  0%, 100% { box-shadow: 0 4px 25px rgba(230, 57, 70, 0.4), 0 0 40px rgba(255, 107, 129, 0.15); }
-  50% { box-shadow: 0 4px 40px rgba(230, 57, 70, 0.7), 0 0 70px rgba(255, 107, 129, 0.35); }
+  0%,
+  100% {
+    box-shadow:
+      0 4px 25px rgba(230, 57, 70, 0.4),
+      0 0 40px rgba(255, 107, 129, 0.15);
+  }
+  50% {
+    box-shadow:
+      0 4px 40px rgba(230, 57, 70, 0.7),
+      0 0 70px rgba(255, 107, 129, 0.35);
+  }
 }
 
 .btn-yes:hover {
-  box-shadow: 0 6px 40px rgba(230, 57, 70, 0.7), 0 0 70px rgba(255, 107, 129, 0.35);
+  box-shadow:
+    0 6px 40px rgba(230, 57, 70, 0.7),
+    0 0 70px rgba(255, 107, 129, 0.35);
   filter: brightness(1.1);
 }
 
 .btn-no {
-  background: linear-gradient(135deg, rgba(80, 50, 70, 0.6) 0%, rgba(60, 30, 50, 0.7) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(80, 50, 70, 0.6) 0%,
+    rgba(60, 30, 50, 0.7) 100%
+  );
   color: rgba(255, 200, 210, 0.85);
   border: 1px solid rgba(255, 130, 150, 0.3);
   font-size: 16px;
@@ -746,9 +942,9 @@ body {
 .love-letter {
   position: relative;
   z-index: 10;
-  max-width: 600px;
-  width: 92%;
-  max-height: 90vh;
+  max-width: 540px;
+  width: 88%;
+  max-height: 88vh;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
@@ -757,11 +953,32 @@ body {
   transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 107, 129, 0.3) transparent;
+  /* Visual styling on scroll container so border-radius stays fixed */
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.11) 0%,
+    rgba(255, 220, 225, 0.05) 100%
+  );
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 180, 190, 0.18);
+  border-radius: 28px;
+  box-shadow:
+    0 12px 80px rgba(230, 57, 70, 0.18),
+    0 0 150px rgba(255, 107, 129, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-.love-letter::-webkit-scrollbar { width: 6px; }
-.love-letter::-webkit-scrollbar-track { background: transparent; }
-.love-letter::-webkit-scrollbar-thumb { background: rgba(255, 107, 129, 0.3); border-radius: 3px; }
+.love-letter::-webkit-scrollbar {
+  width: 6px;
+}
+.love-letter::-webkit-scrollbar-track {
+  background: transparent;
+}
+.love-letter::-webkit-scrollbar-thumb {
+  background: rgba(255, 107, 129, 0.3);
+  border-radius: 3px;
+}
 
 .love-letter.visible {
   opacity: 1;
@@ -770,15 +987,8 @@ body {
 
 .love-letter-inner {
   position: relative;
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 220, 225, 0.05) 100%);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 180, 190, 0.18);
-  border-radius: 28px;
   padding: 44px 38px 38px;
   text-align: center;
-  box-shadow: 0 12px 80px rgba(230, 57, 70, 0.18), 0 0 150px rgba(255, 107, 129, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  overflow: hidden;
 }
 
 /* Heart burst animation */
@@ -797,9 +1007,19 @@ body {
 }
 
 @keyframes burst {
-  0% { transform: translate(-50%, -50%) rotate(var(--angle)) translateY(0) scale(0.4); opacity: 1; }
-  50% { opacity: 1; }
-  100% { transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-140px) scale(1.1); opacity: 0; }
+  0% {
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(0)
+      scale(0.4);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-140px)
+      scale(1.1);
+    opacity: 0;
+  }
 }
 
 .yes-title {
@@ -825,9 +1045,17 @@ body {
 }
 
 @keyframes bounceIn {
-  0% { transform: scale(0); opacity: 0; }
-  60% { transform: scale(1.2); }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Names together: Faruu ∞❤️ Paappu */
@@ -873,8 +1101,15 @@ body {
 }
 
 @keyframes infinitePulse {
-  0%, 100% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.15); opacity: 1; }
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
 }
 
 /* Engraved heart with initials */
@@ -907,7 +1142,11 @@ body {
   width: 52px;
   height: 80px;
   border-radius: 52px 52px 0 0;
-  background: linear-gradient(180deg, rgba(230, 57, 70, 0.15), rgba(255, 107, 129, 0.08));
+  background: linear-gradient(
+    180deg,
+    rgba(230, 57, 70, 0.15),
+    rgba(255, 107, 129, 0.08)
+  );
   border: 1px solid rgba(255, 107, 129, 0.25);
 }
 
@@ -959,14 +1198,25 @@ body {
   position: absolute;
   inset: -15px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 107, 129, 0.08) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 107, 129, 0.08) 0%,
+    transparent 70%
+  );
   animation: heartGlow 3s ease-in-out infinite;
   pointer-events: none;
 }
 
 @keyframes heartGlow {
-  0%, 100% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
 }
 
 /* Love timer */
@@ -1017,8 +1267,13 @@ body {
 }
 
 @keyframes tickPulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .timer-name {
@@ -1057,7 +1312,14 @@ body {
   display: inline-block;
   width: 120px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 180, 190, 0.4), rgba(212, 165, 116, 0.4), rgba(255, 180, 190, 0.4), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 180, 190, 0.4),
+    rgba(212, 165, 116, 0.4),
+    rgba(255, 180, 190, 0.4),
+    transparent
+  );
 }
 
 /* Love letter text */
@@ -1090,12 +1352,24 @@ body {
   margin-bottom: 18px;
 }
 
-.line-2 { animation-delay: 0.9s; }
-.line-3 { animation-delay: 1.4s; }
-.line-4 { animation-delay: 1.9s; }
-.line-5 { animation-delay: 2.4s; }
-.line-6 { animation-delay: 2.9s; }
-.line-7 { animation-delay: 3.4s; }
+.line-2 {
+  animation-delay: 0.9s;
+}
+.line-3 {
+  animation-delay: 1.4s;
+}
+.line-4 {
+  animation-delay: 1.9s;
+}
+.line-5 {
+  animation-delay: 2.4s;
+}
+.line-6 {
+  animation-delay: 2.9s;
+}
+.line-7 {
+  animation-delay: 3.4s;
+}
 
 .signature {
   text-align: right;
@@ -1117,7 +1391,10 @@ body {
 }
 
 @keyframes lineReveal {
-  to { opacity: 1; transform: translateY(0); }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Reasons carousel */
@@ -1153,13 +1430,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
   padding: 0 10px;
   line-height: 1.6;
 }
 
-.reason-visible { opacity: 1; transform: translateY(0); }
-.reason-hidden { opacity: 0; transform: translateY(8px); }
+.reason-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reason-hidden {
+  opacity: 0;
+  transform: translateY(8px);
+}
 
 .reason-dots {
   display: flex;
@@ -1215,11 +1500,21 @@ body {
   animation: promiseSlide 0.6s ease-out forwards;
 }
 
-.promise-1 { animation-delay: 4.6s; }
-.promise-2 { animation-delay: 5.0s; }
-.promise-3 { animation-delay: 5.4s; }
-.promise-4 { animation-delay: 5.8s; }
-.promise-5 { animation-delay: 6.2s; }
+.promise-1 {
+  animation-delay: 4.6s;
+}
+.promise-2 {
+  animation-delay: 5s;
+}
+.promise-3 {
+  animation-delay: 5.4s;
+}
+.promise-4 {
+  animation-delay: 5.8s;
+}
+.promise-5 {
+  animation-delay: 6.2s;
+}
 
 .promise-icon {
   margin-right: 8px;
@@ -1227,7 +1522,10 @@ body {
 }
 
 @keyframes promiseSlide {
-  to { opacity: 1; transform: translateX(0); }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Forever closing message */
@@ -1247,8 +1545,13 @@ body {
 }
 
 @keyframes ringFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(5deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(5deg);
+  }
 }
 
 .forever-text {
@@ -1259,7 +1562,12 @@ body {
 }
 
 .forever-highlight {
-  background: linear-gradient(135deg, var(--gold-light), var(--rose-light), var(--gold));
+  background: linear-gradient(
+    135deg,
+    var(--gold-light),
+    var(--rose-light),
+    var(--gold)
+  );
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1297,16 +1605,32 @@ body {
 .meter-fill {
   width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, var(--rose), var(--rose-light), #ff4081, var(--gold));
+  background: linear-gradient(
+    90deg,
+    var(--rose),
+    var(--rose-light),
+    #ff4081,
+    var(--gold)
+  );
   background-size: 200% 100%;
   border-radius: 4px;
-  animation: meterGrow 2s ease-out 7.0s forwards, meterShimmer 2s linear infinite;
+  animation:
+    meterGrow 2s ease-out 7s forwards,
+    meterShimmer 2s linear infinite;
 }
 
-@keyframes meterGrow { to { width: 100%; } }
+@keyframes meterGrow {
+  to {
+    width: 100%;
+  }
+}
 @keyframes meterShimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .meter-value {
@@ -1334,152 +1658,416 @@ body {
 }
 
 @keyframes roseFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-14px) rotate(12deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(12deg);
+  }
 }
 
 /* Prevent double-tap zoom on mobile */
-* { touch-action: manipulation; }
+* {
+  touch-action: manipulation;
+}
 
 /* Safe area insets for notched phones */
 .app {
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 /* Responsive — tablets & small laptops */
 @media (max-width: 680px) {
-  .app::before { width: 400px; height: 400px; }
-  .app::after { width: 300px; height: 300px; }
-  .app-celebrate::before { width: 600px; height: 600px; }
-  .divider-line { width: 80px; }
+  .app::before {
+    width: 400px;
+    height: 400px;
+  }
+  .app::after {
+    width: 300px;
+    height: 300px;
+  }
+  .app-celebrate::before {
+    width: 600px;
+    height: 600px;
+  }
+  .divider-line {
+    width: 80px;
+  }
 }
 
 /* Responsive — phones */
 @media (max-width: 520px) {
   /* Question screen */
-  .question-card { padding: 28px 20px 24px; width: 92%; max-width: 400px; border-radius: 22px; }
-  .card-glow-border { border-radius: 22px; }
-  .card-glow-border::after { border-radius: 21px; }
-  .question-title { font-size: 24px; min-height: 34px; }
-  .question-main { font-size: 30px; margin-bottom: 8px; }
-  .question-sub { font-size: 13px; margin-bottom: 6px; }
-  .question-from { font-size: 14px; margin-bottom: 20px; }
-  .big-heart-icon { font-size: 52px; }
-  .rose-core { font-size: 40px; }
-  .rose-bloom { width: 65px; height: 65px; margin-bottom: 6px; }
-  .card-sparkle { font-size: 14px; }
+  .question-card {
+    padding: 28px 20px 24px;
+    width: 92%;
+    max-width: 400px;
+    border-radius: 22px;
+  }
+  .card-glow-border {
+    border-radius: 22px;
+  }
+  .card-glow-border::after {
+    border-radius: 21px;
+  }
+  .question-title {
+    font-size: 24px;
+    min-height: 34px;
+  }
+  .question-main {
+    font-size: 30px;
+    margin-bottom: 8px;
+  }
+  .question-sub {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .question-from {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .big-heart-icon {
+    font-size: 52px;
+  }
+  .rose-core {
+    font-size: 40px;
+  }
+  .rose-bloom {
+    width: 65px;
+    height: 65px;
+    margin-bottom: 6px;
+  }
+  .card-sparkle {
+    font-size: 14px;
+  }
 
   /* Buttons */
-  .buttons-area { gap: 14px; }
-  .btn { padding: 12px 32px; font-size: 16px; }
-  .btn-no { padding: 11px 28px; font-size: 14px; }
+  .buttons-area {
+    gap: 14px;
+  }
+  .btn {
+    padding: 12px 32px;
+    font-size: 16px;
+  }
+  .btn-no {
+    padding: 11px 28px;
+    font-size: 14px;
+  }
 
   /* Love letter screen */
-  .love-letter { width: 94%; max-height: 88vh; }
-  .love-letter-inner { padding: 26px 18px 22px; border-radius: 22px; }
-  .yes-title { font-size: 34px; }
-  .yes-subtitle { font-size: 14px; margin-bottom: 14px; }
-  .names-together { gap: 10px; margin-bottom: 14px; }
-  .name-his, .name-hers { font-size: 24px; }
-  .infinity-symbol { font-size: 26px; }
+  .love-letter {
+    width: 92%;
+    max-height: 90vh;
+    border-radius: 22px;
+  }
+  .love-letter-inner {
+    padding: 24px 16px 20px;
+  }
+  .yes-title {
+    font-size: 34px;
+  }
+  .yes-subtitle {
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+  .names-together {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .name-his,
+  .name-hers {
+    font-size: 24px;
+  }
+  .infinity-symbol {
+    font-size: 26px;
+  }
 
   /* Engraved heart */
-  .heart-shape { width: 78px; height: 78px; }
-  .heart-shape::before, .heart-shape::after { width: 40px; height: 62px; border-radius: 40px 40px 0 0; }
-  .heart-shape::before { left: 40px; }
-  .heart-initials { font-size: 20px; }
-  .heart-date { font-size: 8px; }
+  .heart-shape {
+    width: 78px;
+    height: 78px;
+  }
+  .heart-shape::before,
+  .heart-shape::after {
+    width: 40px;
+    height: 62px;
+    border-radius: 40px 40px 0 0;
+  }
+  .heart-shape::before {
+    left: 40px;
+  }
+  .heart-initials {
+    font-size: 20px;
+  }
+  .heart-date {
+    font-size: 8px;
+  }
 
   /* Letter text */
-  .love-line { font-size: 13px; line-height: 1.7; margin-bottom: 12px; }
-  .line-1 { font-size: 19px; margin-bottom: 14px; }
-  .signature { font-size: 17px; margin-top: 16px; }
-  .signature-name { font-size: 21px; }
+  .love-line {
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .line-1 {
+    font-size: 19px;
+    margin-bottom: 14px;
+  }
+  .signature {
+    font-size: 17px;
+    margin-top: 16px;
+  }
+  .signature-name {
+    font-size: 21px;
+  }
 
   /* Reasons */
-  .reasons-carousel { margin: 6px 0 18px; }
-  .reasons-title { font-size: 18px; }
-  .reason-text { font-size: 12.5px; min-height: 36px; padding: 0 6px; }
-  .reason-dots { gap: 5px; margin-top: 10px; }
+  .reasons-carousel {
+    margin: 6px 0 18px;
+  }
+  .reasons-title {
+    font-size: 18px;
+  }
+  .reason-text {
+    font-size: 12.5px;
+    min-height: 36px;
+    padding: 0 6px;
+  }
+  .reason-dots {
+    gap: 5px;
+    margin-top: 10px;
+  }
 
   /* Promises */
-  .promises-section { margin: 6px 0 18px; }
-  .promises-title { font-size: 18px; margin-bottom: 12px; }
-  .promise-item { font-size: 12px; margin-bottom: 8px; line-height: 1.6; }
+  .promises-section {
+    margin: 6px 0 18px;
+  }
+  .promises-title {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .promise-item {
+    font-size: 12px;
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
 
   /* Love meter */
-  .love-meter { margin-top: 8px; }
-  .meter-label { font-size: 12px; }
-  .meter-bar { width: 85%; height: 7px; }
-  .meter-value { font-size: 19px; }
+  .love-meter {
+    margin-top: 8px;
+  }
+  .meter-label {
+    font-size: 12px;
+  }
+  .meter-bar {
+    width: 85%;
+    height: 7px;
+  }
+  .meter-value {
+    font-size: 19px;
+  }
 
   /* Timer */
-  .love-timer { margin-top: 18px; }
-  .timer-label { font-size: 16px; margin-bottom: 10px; }
-  .timer-grid { gap: 6px; }
-  .timer-unit { min-width: 42px; padding: 6px 4px; border-radius: 10px; }
-  .timer-value { font-size: 17px; }
-  .timer-name { font-size: 9px; }
-  .timer-sub { font-size: 11px; }
+  .love-timer {
+    margin-top: 18px;
+  }
+  .timer-label {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .timer-grid {
+    gap: 6px;
+  }
+  .timer-unit {
+    min-width: 42px;
+    padding: 6px 4px;
+    border-radius: 10px;
+  }
+  .timer-value {
+    font-size: 17px;
+  }
+  .timer-name {
+    font-size: 9px;
+  }
+  .timer-sub {
+    font-size: 11px;
+  }
 
   /* Forever */
-  .forever-message { margin-top: 20px; margin-bottom: 12px; }
-  .forever-ring { font-size: 28px; }
-  .forever-text { font-size: 22px; }
-  .forever-highlight { font-size: 26px; }
+  .forever-message {
+    margin-top: 20px;
+    margin-bottom: 12px;
+  }
+  .forever-ring {
+    font-size: 28px;
+  }
+  .forever-text {
+    font-size: 22px;
+  }
+  .forever-highlight {
+    font-size: 26px;
+  }
 
   /* Dividers */
-  .love-divider { gap: 8px; margin-bottom: 16px; }
-  .divider-line { width: 70px; }
+  .love-divider {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .divider-line {
+    width: 70px;
+  }
 
   /* Glow effects */
-  .app::before { width: 300px; height: 300px; }
-  .app::after { width: 200px; height: 200px; }
-  .app-celebrate::before { width: 450px; height: 450px; }
+  .app::before {
+    width: 300px;
+    height: 300px;
+  }
+  .app::after {
+    width: 200px;
+    height: 200px;
+  }
+  .app-celebrate::before {
+    width: 450px;
+    height: 450px;
+  }
 
   /* Shooting star tails shorter */
-  .shooting-star::before { width: calc(var(--tail-length, 120px) * 0.6); }
-  .shooting-star::after { width: calc(var(--tail-length, 120px) * 0.4); }
+  .shooting-star::before {
+    width: calc(var(--tail-length, 120px) * 0.6);
+  }
+  .shooting-star::after {
+    width: calc(var(--tail-length, 120px) * 0.4);
+  }
 }
 
 /* Responsive — very small phones (SE, mini) */
 @media (max-width: 380px) {
-  .question-card { padding: 22px 16px 20px; }
-  .question-title { font-size: 21px; min-height: 30px; }
-  .question-main { font-size: 26px; }
-  .question-sub { font-size: 12px; }
-  .question-from { font-size: 13px; margin-bottom: 16px; }
-  .rose-bloom { width: 55px; height: 55px; }
-  .rose-core { font-size: 34px; }
-  .btn { padding: 10px 26px; font-size: 15px; }
-  .btn-no { padding: 10px 22px; font-size: 13px; }
-  .love-letter-inner { padding: 22px 14px 18px; }
-  .yes-title { font-size: 28px; }
-  .yes-subtitle { font-size: 13px; }
-  .name-his, .name-hers { font-size: 21px; }
-  .infinity-symbol { font-size: 22px; }
-  .love-line { font-size: 12px; }
-  .line-1 { font-size: 17px; }
-  .timer-unit { min-width: 36px; padding: 5px 3px; }
-  .timer-value { font-size: 15px; }
-  .timer-name { font-size: 8px; }
-  .forever-text { font-size: 19px; }
-  .forever-highlight { font-size: 22px; }
-  .heart-shape { width: 68px; height: 68px; }
-  .heart-shape::before, .heart-shape::after { width: 35px; height: 55px; border-radius: 35px 35px 0 0; }
-  .heart-shape::before { left: 35px; }
-  .heart-initials { font-size: 18px; }
-  .promise-item { font-size: 11px; }
-  .reason-text { font-size: 11.5px; }
+  .question-card {
+    padding: 22px 16px 20px;
+  }
+  .question-title {
+    font-size: 21px;
+    min-height: 30px;
+  }
+  .question-main {
+    font-size: 26px;
+  }
+  .question-sub {
+    font-size: 12px;
+  }
+  .question-from {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .rose-bloom {
+    width: 55px;
+    height: 55px;
+  }
+  .rose-core {
+    font-size: 34px;
+  }
+  .btn {
+    padding: 10px 26px;
+    font-size: 15px;
+  }
+  .btn-no {
+    padding: 10px 22px;
+    font-size: 13px;
+  }
+  .love-letter {
+    width: 94%;
+    max-height: 84vh;
+    border-radius: 18px;
+  }
+  .love-letter-inner {
+    padding: 18px 12px 16px;
+  }
+  .yes-title {
+    font-size: 28px;
+  }
+  .yes-subtitle {
+    font-size: 13px;
+  }
+  .name-his,
+  .name-hers {
+    font-size: 21px;
+  }
+  .infinity-symbol {
+    font-size: 22px;
+  }
+  .love-line {
+    font-size: 12px;
+  }
+  .line-1 {
+    font-size: 17px;
+  }
+  .timer-unit {
+    min-width: 36px;
+    padding: 5px 3px;
+  }
+  .timer-value {
+    font-size: 15px;
+  }
+  .timer-name {
+    font-size: 8px;
+  }
+  .forever-text {
+    font-size: 19px;
+  }
+  .forever-highlight {
+    font-size: 22px;
+  }
+  .heart-shape {
+    width: 68px;
+    height: 68px;
+  }
+  .heart-shape::before,
+  .heart-shape::after {
+    width: 35px;
+    height: 55px;
+    border-radius: 35px 35px 0 0;
+  }
+  .heart-shape::before {
+    left: 35px;
+  }
+  .heart-initials {
+    font-size: 18px;
+  }
+  .promise-item {
+    font-size: 11px;
+  }
+  .reason-text {
+    font-size: 11.5px;
+  }
 }
 
 /* Responsive height — landscape phones */
 @media (max-height: 600px) {
-  .question-card { padding: 18px 20px 16px; }
-  .rose-bloom { width: 50px; height: 50px; margin-bottom: 4px; }
-  .rose-core { font-size: 32px; }
-  .question-main { font-size: 28px; margin-bottom: 4px; }
-  .question-from { margin-bottom: 14px; }
-  .love-letter { max-height: 92vh; }
-  .love-letter-inner { padding: 20px 18px; }
+  .question-card {
+    padding: 18px 20px 16px;
+  }
+  .rose-bloom {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 4px;
+  }
+  .rose-core {
+    font-size: 32px;
+  }
+  .question-main {
+    font-size: 28px;
+    margin-bottom: 4px;
+  }
+  .question-from {
+    margin-bottom: 14px;
+  }
+  .love-letter {
+    max-height: 92vh;
+    border-radius: 20px;
+  }
+  .love-letter-inner {
+    padding: 20px 18px;
+  }
 }
