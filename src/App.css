@@ -1759,7 +1759,7 @@ body {
   /* Love letter screen */
   .love-letter {
     width: 92%;
-    max-height: 90vh;
+    max-height: 90%;
     border-radius: 22px;
   }
   .love-letter-inner {
@@ -1978,7 +1978,7 @@ body {
   }
   .love-letter {
     width: 94%;
-    max-height: 84vh;
+    max-height: 90%;
     border-radius: 18px;
   }
   .love-letter-inner {
@@ -2064,7 +2064,7 @@ body {
     margin-bottom: 14px;
   }
   .love-letter {
-    max-height: 92vh;
+    max-height: 90%;
     border-radius: 20px;
   }
   .love-letter-inner {
